@@ -28,12 +28,26 @@ This installs the `pagerank` package along with its dependencies.
 from pagerank.power_iteration import recursive_pagerank
 from pagerank.monte_carlo import random_surf
 from pagerank.eigendecomposition import matrix_pagerank, eigenvector_pagerank
-from pagerank.utils import make_web
+from pagerank.utils import make_web, print_rank
 
 # Generate a random web with 6 pages and 0-5 links per page
 web = make_web(6, 5)
-
-# Compute pagerank via eigendecomposition
+```
+Compute via Power iteration:
+```python
+# Input : web, stopvalue (stop if change reaches below stopvalue)
+ranks, iterations = recursive_pagerank(web,0.0000001)
+print_rank(ranks)
+```
+Monte carlo:
+```python
+# Input : web, sampling from n iterations
+ranks = random_surf(web, 100000)
+print_rank(ranks)
+```
+Eigendecomposition:
+```python
+# Input : web
 ranks = eigenvector_pagerank(web)
 print_rank(ranks)
 ```
