@@ -1,0 +1,20 @@
+# Python bytecode cache
+__pycache__/
+*.pyc
+
+# Packaging artifacts from pip install -e .
+*.egg-info/
+*.egg
+build/
+dist/
+
+# Virtual environment (if you have one in the repo)
+venv/
+.venv/
+env/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
