@@ -4,13 +4,13 @@ Computes pagerank via the power iteration method.
 from pagerank.utils import *
 
 def rank_update(web, pageranks, page, d):
-    ''''
+    """
     Updates the value of the pagerank for page based on the formula
         PR(p)= (1-d)/N + d*sum_j (PR(q)/OB(q))
     where the sum is over all pages q that link to page, PR(q) is the current
     pagerank of page q (from "pageranks") and OB(q) is the number of pages 
     outbound from page q.  Sinks are treated as linking to all pages in web.
-     '''
+    """
     increment = 0
     # Pagerank of initial page 
     PR_old = pageranks[page]
@@ -18,7 +18,7 @@ def rank_update(web, pageranks, page, d):
     N = len(web.keys())
 
     # add elements to inbound_p 
-    # the set of all pages that link in to p, i.e. loop through and check if each links to p
+    # the set of all pages that link in to p
     for key, val in web.items():
         # if the page is in the links of key, add it to inbound
         if page in val:

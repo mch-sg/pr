@@ -11,7 +11,6 @@ def surf_step(web, page, d=0.85):
     distribution = dict()
     N = len(web.keys())
 
-    # Every key in web needs a place in distribution 
     for key, val in web.items():
         distribution[key] = 0
 
@@ -36,7 +35,7 @@ def random_surf(web, n, d=0.85):
     Return pagerank values for each page by sampling `n` pages
     according to surf_step. 
     """
-    ranking = dict() # the ranking for each page
+    ranking = dict()
     all_pages = list(web.keys())
 
     # initialize that every key in web needs a place in distribution 
@@ -45,7 +44,6 @@ def random_surf(web, n, d=0.85):
  
     p = np.random.choice(all_pages) 
     for _ in range(n):
-        # Add 1 each time we visit a site
         ranking[p] += 1
         # Get our probability distribution of the page p
         probdist = surf_step(web, p, d)
@@ -56,7 +54,6 @@ def random_surf(web, n, d=0.85):
         # Choose a new page based on that probability
         p = np.random.choice(all_pages, p=probs) 
     
-    # Divide by n to get the pagerank
     for key, val in ranking.items():
         ranking[key] /= n
 

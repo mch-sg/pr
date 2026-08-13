@@ -12,9 +12,9 @@ def modified_link_matrix(web, pagelist, d=0.85):
     # Init A as zero matrix
     A = np.zeros([N,N])
 
-    # create matrix
-    for j in range(N):          # cols
-        for i in range(N):      # rows
+    # Modifying our adjacency matrix
+    for j in range(N):          
+        for i in range(N):     
             # if p_j links to p_i
             if pagelist[i] in web[pagelist[j]]:
                N_j = len(web[pagelist[j]])
@@ -31,27 +31,24 @@ def eigenvector_pagerank(web, d=0.85):
     Returns the pagerank of web as the eigenvector of the modified link matrix
     """
     start = time.time()
-    ranking = dict()   #convert to dictionary
+    ranking = dict()   
 
-    # Init dict with same keys as web
     for key, val in web.items():
         ranking[key] = 0
 
     pages = list(web.keys())
-    # Create our adjacency matrix M from function before
     M = modified_link_matrix(web,pages, d)
 
     # Use np eigenvector function to find our eigenvals and vects
     lamda, V = np.linalg.eig(M)
     # Choose the first vector
-    V1 = V[:,0:1]    # the eigenvalue method
-    # normalize the eigenvector so that it's components sum to 1
+    V1 = V[:,0:1]   
+    # normalize the eigenvector
     V1 = np.real(V1)
-    ranking3 = V1/(np.sum(V1))  # ranking from eigenvector 1
+    ranking3 = V1 / (np.sum(V1))  # ranking from eigenvector 1
 
     # Loop through the vector and input them into the ranking dict.
     for k in range(len(pages)):
-        #print("ranking:", float(ranking3[k]))
         ranking[k] = float(ranking3[k])
 
     end = time.time()
