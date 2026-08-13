@@ -36,7 +36,7 @@ web = make_web(6, 5)
 Compute via Power iteration:
 ```python
 # Input : web, stopvalue (stop if change reaches below stopvalue)
-ranks, iterations = recursive_pagerank(web,0.0000001)
+ranks, iterations = recursive_pagerank(web, 0.0000001)
 print_rank(ranks)
 ```
 Monte carlo:
