@@ -64,7 +64,7 @@ We found that the eigendecomposition method proved to work most accurately in ou
 See the [report](/paper.pdf) for further details on the analysis.
 
 
-## Project Structure
+## Project structure
 ```
 pr/
 ├── README.md
